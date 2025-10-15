@@ -11,9 +11,10 @@
         margin: 0;
         padding: 20px;
         align-items: center;
+
     }
 
-    
+    /* ✅ الشبكة العامة */
     .grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -50,7 +51,7 @@
         flex-wrap: wrap;
     }
 
-   
+    /* ✅ صناديق الإصدارات */
     .version-box-100-550,
     .version-box-600-761,
     .version-box-720-761,
@@ -82,7 +83,7 @@
         color: red;
     }
 
-   
+    /* ✅ ملاحظات */
     .note, .note-Lua {
         background: #2f2f2f;
         color: white;
@@ -92,15 +93,30 @@
         font-size: 14px;
         text-transform: uppercase;
     }
+
+    .note, .note-y2jb {
+        background: #2f2f2f;
+        color: white;
+        border-radius: 10px;
+        padding: 6px 10px;
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
     .note-Lua {
         background: #089001;
+    }
+
+    .note-y2jb {
+        background: #FF9800;
     }
 
     p, li, span {
         color: white;
     }
 
-   
+    /* ✅ استجابة للجوال */
     @media (max-width: 1000px) {
         .grid {
             grid-template-columns: repeat(2, 1fr);
@@ -155,7 +171,10 @@
     <span style="font-size: 24px"><b><span style="color: #F44336; background-color: #0A0000;">FW 12.00–12.02</span></b></span>
 </p>
 
+
 <br>
+
+<!-- محتوى الصفحة كما هو -->
 <div class="grid">
 
     <div class="container">
@@ -165,19 +184,34 @@
         </div>
         <div class="versions">
             <div class="row"><div class="version-box-100-550 blue1">1.00–5.50</div>
-            <div class="note">webkit</div><div class="note">.</div><div class="note">Y2JB</div><div class="note">.</div>
+            <div class="note">webkit</div>
+            <div class="note">.</div>
+            <div class="note">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-600-761 blue2">6.00-7.61</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">Y2JB</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-800-1001 blue3">8.00-10.01</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">Y2JB</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-1020-1160 orange">10.20-11.60</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note-y2jb">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-1200-1202 red">12.00-12.02</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note-y2jb">Y2JB</div>
+            <div class="note">.</div>
             </div>
         </div>
     </div>
@@ -188,16 +222,28 @@
         </div>
         <div class="versions">
             <div class="row"><div class="version-box-720-761 blue2">7.20-7.61</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">Y2JB</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-800-1001 blue3">8.00-10.01</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">Y2JB</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-1020-1160 orange">10.20-11.60</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note-y2jb">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-1200-1202 red">12.00-12.02</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note-y2jb">Y2JB</div>
+            <div class="note">.</div>
             </div>
         </div>
     </div>
@@ -208,13 +254,22 @@
         </div>
         <div class="versions">
             <div class="row"><div class="version-box-905-1001 blue3">9.05-10.01</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">Y2JB</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-1020-1160 orange">10.20-11.60</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note-y2jb">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-1200-1202 red">12.00-12.02</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note-y2jb">Y2JB</div>
+            <div class="note">.</div>
             </div>
         </div>
     </div>
@@ -228,19 +283,34 @@
         </div>
         <div class="versions">
             <div class="row"><div class="version-box-100-550 blue1">1.00–5.50</div>
-            <div class="note">webkit</div><div class="note">Lua</div><div class="note">Y2JB</div><div class="note">BD-JB</div>
+            <div class="note">webkit</div>
+            <div class="note">Lua</div>
+            <div class="note">Y2JB</div>
+            <div class="note">BD-JB</div>
             </div>
             <div class="row"><div class="version-box-600-761 blue2">6.00-7.61</div>
-            <div class="note">Lua</div><div class="note">Y2JB</div><div class="note">BD-JB</div>
+            <div class="note">.</div>
+            <div class="note">Lua</div>
+            <div class="note">Y2JB</div>
+            <div class="note">BD-JB</div>
             </div>
             <div class="row"><div class="version-box-800-1001 blue3">8.00-10.01</div>
-            <div class="note">Lua</div><div class="note">Y2JB</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">Lua</div>
+            <div class="note">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-1020-1160 orange">10.20-11.60</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note-y2jb">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-1200-1202 red">12.00-12.02</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note-y2jb">Y2JB</div>
+            <div class="note">.</div>
             </div>
         </div>
     </div>
@@ -251,16 +321,28 @@
         </div>
         <div class="versions">
             <div class="row"><div class="version-box-720-761 blue2">7.20-7.61</div>
-            <div class="note-Lua">★Lua</div><div class="note">Y2JB</div><div class="note">BD-JB</div>
+            <div class="note">.</div>
+            <div class="note-Lua">★Lua</div>
+            <div class="note">Y2JB</div>
+            <div class="note">BD-JB</div>
             </div>
             <div class="row"><div class="version-box-800-1001 blue3">8.00-10.01</div>
-            <div class="note-Lua">★Lua</div><div class="note">Y2JB</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note-Lua">★Lua</div>
+            <div class="note">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-1020-1160 orange">10.20-11.60</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note-y2jb">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-1200-1202 red">12.00-12.02</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note-y2jb">Y2JB</div>
+            <div class="note">.</div>
             </div><br>
             <ul>
                 <li><span style="background-color: #089001"><span style="color: #FFFFFF"><b><span style="font-size: 16pt">★If the disc reader is paired  .</span></b></span></span></li>
@@ -274,14 +356,20 @@
         </div>
         <div class="versions">
             <div class="row"><div class="version-box-905-1001 blue3">9.05-10.01</div>
-            <div class="note-Lua">★Lua</div><div class="note">Y2JB</div>
+             <div class="note">.</div>
+            <div class="note-Lua">★Lua</div>
+            <div class="note">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-1020-1160 orange">10.20-11.60</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">.</div><div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note">.</div>
+            <div class="note-y2jb">Y2JB</div>
+            <div class="note">.</div>
             </div>
             <div class="row"><div class="version-box-1200-1202 red">12.00-12.02</div>
-            <div class="note">.</div><div class="note">.</div><div class="note">.</div><div class="note">.</div>
-            </div><br><br><br>
+            <div class="note">.</div><div class="note">.</div><div class="note-y2jb">Y2JB</div><div class="note">.</div>
+            </div>><br><br><br>
             <ul>
                 <li><span style="background-color: #089001"><span style="color: #FFFFFF"><b><span style="font-size: 16pt">★If the disc reader is paired  .</span></b></span></span></li>
             </ul>
