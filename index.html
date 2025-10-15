@@ -1,19 +1,19 @@
-﻿﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> PS5 Exploitable Firmware — Research & News</title>
+<title>PS5 Exploitable Firmware — Research & News</title>
 <style>
     body {
         font-family: "Segoe UI", sans-serif;
         background-color: #202020;
         margin: 0;
-        padding: 40px;
+        padding: 20px;
         align-items: center;
-        gap: 40px;
     }
 
+    
     .grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -29,13 +29,14 @@
         background: rgba(230, 230, 230, 0.45);
         padding: 15px;
         border-radius: 12px;
-        box-shadow: 0 0 6px rgba(0,0,0,0.2);
+        box-shadow: 0 0 6px rgba(0,0,0,0.3);
     }
 
     .ps5 img {
-        height: 200px;
+        height: 180px;
         display: block;
     }
+
     .versions {
         display: flex;
         flex-direction: column;
@@ -46,10 +47,17 @@
         display: flex;
         align-items: center;
         gap: 8px;
+        flex-wrap: wrap;
     }
 
-    .version-box-100-550 {
-        color: #0ED600;
+   
+    .version-box-100-550,
+    .version-box-600-761,
+    .version-box-720-761,
+    .version-box-800-1001,
+    .version-box-905-1001,
+    .version-box-1020-1160,
+    .version-box-1200-1202 {
         font-weight: bold;
         font-size: 16px;
         border-radius: 10px;
@@ -58,84 +66,75 @@
         text-align: center;
     }
 
-
-    .version-box-600-761 {
-        color: #0ED600;
-        font-weight: bold;
-        font-size: 16px;
-        border-radius: 10px;
-        padding: 6px 12px;
-        min-width: 110px;
-        text-align: center;
-    }
-
-    .version-box-720-761 {
-        color: #0ED600;
-        font-weight: bold;
-        font-size: 16px;
-        border-radius: 10px;
-        padding: 6px 12px;
-        min-width: 110px;
-        text-align: center;
-    }
-
-    .version-box-800-1001 {
-        color: #0ED600;
-        font-weight: bold;
-        font-size: 16px;
-        border-radius: 10px;
-        padding: 6px 12px;
-        min-width: 110px;
-        text-align: center;
-    }
-
+    .version-box-100-550,
+    .version-box-600-761,
+    .version-box-720-761,
+    .version-box-800-1001,
     .version-box-905-1001 {
         color: #0ED600;
-        font-weight: bold;
-        font-size: 16px;
-        border-radius: 10px;
-        padding: 6px 12px;
-        min-width: 110px;
-        text-align: center;
     }
 
     .version-box-1020-1160 {
         color: #FF9800;
-        font-weight: bold;
-        font-size: 16px;
-        border-radius: 10px;
-        padding: 6px 12px;
-        min-width: 110px;
-        text-align: center;
     }
 
     .version-box-1200-1202 {
         color: red;
-        font-weight: bold;
-        font-size: 16px;
-        border-radius: 10px;
-        padding: 6px 12px;
-        min-width: 110px;
-        text-align: center;
     }
 
-    .note {
+   
+    .note, .note-Lua {
         background: #2f2f2f;
         color: white;
         border-radius: 10px;
         padding: 6px 10px;
         font-weight: bold;
         font-size: 14px;
+        text-transform: uppercase;
     }
     .note-Lua {
-    background: #089001;
-    color: white;
-    border-radius: 10px;
-    padding: 6px 10px;
-    font-weight: bold;
-    font-size: 14px;
-    text-transform: uppercase;
-}
+        background: #089001;
+    }
+
+    p, li, span {
+        color: white;
+    }
+
+   
+    @media (max-width: 1000px) {
+        .grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 700px) {
+        .grid {
+            grid-template-columns: 1fr;
+        }
+
+        body {
+            padding: 10px;
+        }
+
+        .container {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .ps5 img {
+            height: 140px;
+        }
+
+        .versions {
+            width: 100%;
+            align-items: center;
+        }
+
+        p {
+            text-align: center !important;
+        }
+    }
 
 
     .blue1 { background: #2f2f2f; }
@@ -144,16 +143,19 @@
     .orange { background: #2f2f2f; }
     .red { background: #2f2f2f; }
 
-
 </style>
 </head>
 <body>
-<p style="text-align: left"><span style="font-size: 36px"><b><span style="color: #FFFFFF"> PS5 Exploitable Firmware — Research & News</span></b></span></p>
-<p style="text-align: center"><span style="font-size: 24px"><b><span style="color: #0ED600"><span style="background-color: #0A0000">FW 1.00-10-01</span></span></b></span>
-<span style="font-size: 24px"><b><span style="color: #FF9800"><span style="background-color: #0A0000">FW 10.20-11-60</span></span></b></span>
-<span style="font-size: 24px"><b><span style="color: #F44336"><span style="background-color: #0A0000">FW 12.00-12-02</span></span></b></span>
-</p> <br>
 
+<p style="text-align: left"><span style="font-size: 36px"><b><span style="color: #FFFFFF">PS5 Exploitable Firmware — Research & News</span></b></span></p>
+
+<p style="text-align: center">
+    <span style="font-size: 24px"><b><span style="color: #0ED600; background-color: #0A0000;">FW 1.00–10.01</span></b></span>
+    <span style="font-size: 24px"><b><span style="color: #FF9800; background-color: #0A0000;">FW 10.20–11.60</span></b></span>
+    <span style="font-size: 24px"><b><span style="color: #F44336; background-color: #0A0000;">FW 12.00–12.02</span></b></span>
+</p>
+
+<br>
 <div class="grid">
 
     <div class="container">
