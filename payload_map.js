@@ -1,0 +1,289 @@
+
+// @ts-check
+
+const CUSTOM_ACTION_APPCACHE_REMOVE = "appcache-remove";
+
+/**
+ * @typedef {Object} PayloadInfo
+ * @property {string} displayTitle
+ * @property {string} description
+ * @property {string} fileName - path relative to the payloads folder
+ * @property {string} author
+ * @property {string} projectSource
+ * @property {string} binarySource - should be direct download link to the included version, so that you can verify the hashes
+ * @property {string} version
+ * @property {string[]?} [supportedFirmwares] - optional, these are interpreted as prefixes, so "" would match all, and "4." would match 4.xx, if not set, the payload is assumed to be compatible with all firmwares
+ * @property {number?} [toPort] - optional, if the payload should be sent to "127.0.0.1:<port>" instead of loading directly, if specified it'll show up in webkit-only mode too
+ * @property {string?} [customAction]
+ */
+
+/**
+ * @type {PayloadInfo[]}
+*/
+const payload_map = [
+    // { // auto-loaded
+    //     displayTitle: "PS5 Payload ELF Loader",
+    //     description: "Uses port 9021. Persistent network elf loader",
+    //     fileName: "elfldr.elf",
+    //     author: "john-tornblom",
+    //     projectSource: "https://github.com/ps5-payload-dev/elfldr",
+    //     binarySource: "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.19/Payload.zip",
+    //     version: "0.19",
+    //     supportedFirmwares: ["1.", "2.", "3.", "4.", "5."]
+    // },
+	{
+        displayTitle: "OnionHEN",
+        description: "Supported firmware: 4.03 – 12.70",
+        fileName: "OnionHEN.elf",
+        author: "aydencharles",
+        projectSource: "https://github.com/aydencharles/onionHEN/releases",
+        binarySource: "https://github.com/aydencharles/onionHEN/releases",
+        version: "v0.0.12",
+        toPort: 9021
+    },
+    {
+        displayTitle: "PS5 Linux-loader",
+        description: "Added 6.50 and 7.20 support",
+        fileName: "ps5-linux-loader.elf",
+        author: "TheOfficialFloW",
+        projectSource: "https://github.com/ps5-linux/ps5-linux-loader/releases",
+        binarySource: "https://github.com/ps5-linux/ps5-linux-loader/releases",
+        version: "02.3",
+        toPort: 9021
+    },
+    {
+        displayTitle: "etaHEN 2.6B",
+        description: "AIO HEN",
+        fileName: "etaHEN-2.6B.bin",
+        author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
+        projectSource: "https://github.com/etaHEN/etaHEN",
+        binarySource: "https://github.com/etaHEN/etaHEN/releases/download/2.6B/etaHEN-2.6B.bin",
+        version: "2.6b",
+        toPort: 9021
+    },
+    {
+        displayTitle: "etaHEN 2.5B",
+        description: "AIO HEN",
+        fileName: "etaHEN-2.5B.bin",
+        author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
+        projectSource: "https://github.com/etaHEN/etaHEN",
+        binarySource: "https://github.com/etaHEN/etaHEN/releases/download/2.6B/etaHEN-2.6B.bin",
+        version: "2.6b",
+        toPort: 9021
+    },
+    {
+        displayTitle: "evox",
+        description: "evox",
+        fileName: "evox_v0.3.3.elf",
+        author: "evox",
+        projectSource: "",
+        binarySource: "",
+        version: "v0.3.3",
+        toPort: 9021
+    },
+    {
+        displayTitle: "PS5 HEN",
+        description: "HEN for 1.00 to 4.51 by Cragson",
+        fileName: "ps5-hen.elf",
+        author: "cragson, SpecterDev, fail0verflow, flatz, EchoStretch", 
+        projectSource: "https://github.com/cragson/ps5-hen",
+        binarySource: "https://github.com/cragson/ps5-hen/releases/download/dev-latest",
+        version: "1.0",
+        supportedFirmwares: ["1.","2.","3.","4."],
+        toPort: 9021
+    },
+    {
+        displayTitle: "Kstuff Lite 1.09",
+        description: "FPKG enabler",
+        fileName: "kstuff1.elf",
+        author: "sleirsgoevy, john-tornblom, EchoStretch, buzzer-re, BestPig, LightningMods, zecoxao, idlesauce",
+        projectSource: "https://github.com/EchoStretch/kstuff-lite",
+        binarySource: "https://github.com/EchoStretch/kstuff-lite/releases/download/v1.01/",
+        version: "1.09",
+        toPort: 9021
+    },
+    {
+        displayTitle: "Kstuff Lite 1.11",
+        description: "FPKG enabler",
+        fileName: "kstuff.elf",
+        author: "sleirsgoevy, john-tornblom, EchoStretch, buzzer-re, BestPig, LightningMods, zecoxao, idlesauce",
+        projectSource: "https://github.com/EchoStretch/kstuff-lite",
+        binarySource: "https://github.com/EchoStretch/kstuff-lite/releases/download/v1.01/",
+        version: "1.11",
+        toPort: 9021
+    },
+    {
+        displayTitle: "A53",
+        description: "a53 ppr install fast",
+        fileName: "a53.elf",
+        author: "sleirsgoevy, john-tornblom, EchoStretch, buzzer-re, BestPig, LightningMods, zecoxao, idlesauce",
+        projectSource: "https://github.com/EchoStretch/kstuff-lite",
+        binarySource: "https://github.com/EchoStretch/kstuff-lite/releases/download/v1.01/",
+        version: "15.09",
+        toPort: 9021
+    },
+    {
+        displayTitle: "pldmgr_v0.5.1",
+        description: "itsPLK",
+        fileName: "pldmgr_v0.5.1.elf",
+        author: "itsPLK",
+        projectSource: "https://github.com/itsPLK/ps5-lua-autoloader",
+        binarySource: "https://github.com/itsPLK/ps5-lua-autoloader",
+        version: "v0.5.1",
+        toPort: 9021
+    },
+    {
+        displayTitle: "shadowmountplus",
+        description: "Mount games has never been easier with shadowmountplus",
+        fileName: "shadowmountplus.elf",
+        author: "drakmor",
+        projectSource: "https://github.com/drakmor/ShadowMountPlus/",
+        binarySource: "https://github.com/drakmor/ShadowMountPlus/releases/tag/1.6beta5",
+        version: "1.6test15f",
+        toPort: 9021
+    },
+	{
+        displayTitle: "np-fake-signin-ps5",
+        description: "np-fake-signin-ps5",
+        fileName: "np-fake-signin-ps5.elf",
+        author: "earthonion",
+        projectSource: "https://github.com/earthonion/np-account-restore/releases",
+        binarySource: "https://github.com/earthonion/np-account-restore/releases",
+        version: "v0.1",
+        toPort: 9021
+    },
+    {
+        displayTitle: "libhijacker game-patch",
+        description: "Patches supported games to run at higher framerates, and adds debug menus to certain titles.",
+        fileName: "libhijacker-game-patch.v1.160.elf",
+        author: "illusion0001, astrelsky",
+        projectSource: "https://github.com/illusion0001/libhijacker",
+        binarySource: "https://github.com/illusion0001/libhijacker-game-patch/releases/tag/1.160-75ab26a3",
+        version: "1.160",
+        supportedFirmwares: ["3.", "4."]
+    },
+    {
+        displayTitle: "websrv",
+        description: "Custom homebrew loader. Runs on port 8080.",
+        fileName: "websrv.elf",
+        author: "john-tornblom",
+        projectSource: "https://github.com/ps5-payload-dev/websrv",
+        binarySource: "https://github.com/ps5-payload-dev/websrv/actions/runs/14318408868",
+        version: "0.22",
+        toPort: 9021
+    },
+	{
+        displayTitle: "ftpsrv-ps5-1.7",
+        description: "FTP server. Runs on port 2121.",
+        fileName: "ftpsrv-ps5-1.7.elf",
+        author: "john-tornblom",
+        projectSource: "https://github.com/ps5-payload-dev/ftpsrv",
+        binarySource: "https://github.com/ps5-payload-dev/pacbrew-repo/actions/runs/14012252230",
+        version: "0.17",
+        toPort: 9021
+    },
+    {
+        displayTitle: "App-logo2",
+        description: "App-logo2",
+        fileName: "App-logo2.elf",
+        author: "MasterPS0",
+        projectSource: "",
+        binarySource: "",
+        version: "0.2",
+        toPort: 9021
+    },
+    {
+        displayTitle: "klogsrv",
+        description: "Klog server. Runs on port 3232.",
+        fileName: "klogsrv.elf",
+        author: "john-tornblom",
+        projectSource: "https://github.com/ps5-payload-dev/klogsrv",
+        binarySource: "https://github.com/ps5-payload-dev/pacbrew-repo/actions/runs/14012252230",
+        version: "0.5.3",
+        toPort: 9021
+    },
+    {
+        displayTitle: "voidshell",
+        description: "AIO tool by VoidWhisper",
+        fileName: "voidshell.elf",
+        author: "VoidWhisper",
+        projectSource: "https://ko-fi.com/s/d90b784d5d",
+        binarySource: "https://ko-fi.com/s/d90b784d5d",
+        version: "3.0B",
+        toPort: 9021
+    },
+	{
+        displayTitle: "ps5debug-NG",
+        description: "Debugger (Experimental beta)",
+        fileName: "ps5debug-NG_v1.2.5.elf",
+        author: "OpenSourcereR-dev, Pharaoh2k,  Echo Stretch",
+        projectSource: "https://github.com/OpenSourcereR-dev/ps5debug-NG/releases",
+        binarySource: "https://github.com/OpenSourcereR-dev/ps5debug-NG/releases",
+        version: "1.2.5",
+        toPort: 9021
+    },
+	{
+        displayTitle: "ps5debug",
+        description: "Debugger (Experimental beta)",
+        fileName: "ps5debug_v1.0b5.elf",
+        author: "SiSTR0, ctn123",
+        projectSource: "https://github.com/GoldHEN/ps5debug",
+        binarySource: "https://github.com/GoldHEN/ps5debug/releases/download/1.0b3/ps5debug_v1.0b5.elf",
+        version: "1.0b5",
+        supportedFirmwares: ["3.", "4.", "5."],
+        toPort: 9021
+    },
+    {
+        displayTitle: "ps5debug",
+        description: "Debugger (Experimental beta)",
+        fileName: "ps5debug_v1.0b3.elf",
+        author: "SiSTR0, ctn123",
+        projectSource: "https://github.com/GoldHEN/ps5debug",
+        binarySource: "https://github.com/GoldHEN/ps5debug/releases/download/1.0b3/ps5debug_v1.0b3.elf",
+        version: "1.0b3",
+        supportedFirmwares: ["3.", "4.", "5."],
+        toPort: 9021
+    },
+    {
+        displayTitle: "ps5debug",
+        description: "Debugger, open source version by DizzRL",
+        fileName: "ps5debug_dizz.elf",
+        author: "Dizz, astrelsky, John Tornblom, SiSTR0, golden, idlesauce",
+        projectSource: "https://github.com/idlesauce/ps5debug",
+        binarySource: "https://github.com/idlesauce/ps5debug/releases/download/v0.0.1/ps5debug.elf",
+        version: "0.0.1-r2",
+        toPort: 9021
+    },
+    {
+        displayTitle: "ps5-versions",
+        description: "Shows kernel build, os and sdk versions",
+        fileName: "ps5-versions.elf",
+        author: "SiSTRo",
+        projectSource: "https://github.com/SiSTR0/ps5-versions",
+        binarySource: "https://github.com/SiSTR0/ps5-versions/releases/download/v1.0/ps5-versions.elf",
+        version: "1.0",
+        supportedFirmwares: ["1.", "2.", "3.", "4."]
+    },
+    {
+        displayTitle: "ps5-remoteplay-get-pin",
+        description: "Get Remote Play PIN for offline activated users. Send again to cancel.",
+        fileName: "rp-get-pin.elf",
+        author: "idlesauce",
+        projectSource: "https://github.com/idlesauce/ps5-remoteplay-get-pin",
+        binarySource: "https://github.com/idlesauce/ps5-remoteplay-get-pin/releases/tag/v0.1.1",
+        version: "0.1.1",
+        toPort: 9021
+    },
+    {
+        // https://github.com/Storm21CH/PS5_Browser_appCache_remove
+        displayTitle: "Browser appcache remover",
+        description: "Deletes for only the current user in webkit-only mode",
+        fileName: "",
+        author: "Storm21CH, idlesauce",
+        projectSource: "",
+        binarySource: "",
+        version: "1.0",
+        customAction: CUSTOM_ACTION_APPCACHE_REMOVE
+    }
+
+];
