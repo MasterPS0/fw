@@ -8,14 +8,16 @@
 
 <!-- ===== التصميم المعدل ===== -->
 <style>
+
+
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Tajawal:wght@400;700&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
     margin: 0; padding: 0; min-height: 100vh;
-    background: linear-gradient(135deg, #0a0e1a 0%, #1a1f35 50%, #0d1326 100%);
-    background-attachment: fixed;
+    background: url(xmb.png) no-repeat center center fixed;
+    background-size: cover;
     color: #c8ced8;
     font-family: 'Tajawal', sans-serif;
     display: flex;
@@ -57,20 +59,19 @@
   }
 
   .highlight {
-    background: linear-gradient(135deg, #ff6b35, #ff2e63);
+   background: linear-gradient(77deg, #ffffff, #ffffff);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: #d7d7d700;
     background-clip: text;
-    text-shadow: 0 0 40px rgba(255, 46, 99, 0.3);
+    text-shadow: 0 0 40px rgb(255 255 255 / 30%);
   }
 
   .ahmed {
-    background: linear-gradient(135deg, #ff6b35, #ff2e63);
+    background: linear-gradient(77deg, #ffffff, #ffffff);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: #d7d7d700;
     background-clip: text;
-    text-shadow: 0 0 40px rgba(255, 46, 99, 0.3);
-    font-size: 0.85em;
+    text-shadow: 0 0 40px rgb(255 255 255 / 30%);
   }
 
   .divider-dot {
@@ -104,16 +105,16 @@
 
   .version-badge {
     display: inline-block;
-    background: linear-gradient(135deg, #ff6b35, #ff2e63);
+    background: linear-gradient(135deg, #686a6b, #969999);
     color: white;
     font-family: 'Orbitron', sans-serif;
-    font-size: 11px;
+    font-size: 23px;
     font-weight: 700;
     padding: 2px 14px;
     border-radius: 20px;
     margin-top: 6px;
     letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(255, 46, 99, 0.3);
+    box-shadow: 0 4px 15px rgb(78 81 84);
   }
 
   .separator {
@@ -530,11 +531,7 @@
   <!-- ===== الرأس المعدل ===== -->
   <div class="header">
     <h1 class="main-title">
-      <span class="highlight">Mustafa</span>
-      <span class="divider-dot">•</span>
-      <span class="ahmed">Ahmed Dragme</span><br>
-      <span class="ps4-text">PS4</span>
-      <span class="ps5-text">PS5</span>
+      <span class="highlight">PS5 SLOPKIT 9.00-12.00</span>
     </h1>
     <div class="subtitle">Exploit Host</div>
     <div class="version-badge">✨ 9.00 – 12.00</div>
@@ -577,22 +574,22 @@
   <!-- ===== قائمة الحمولات ===== -->
   <div id="payloadMenu">
     <div class="menuTitle">📦 PAYLOADS</div>
-    <a class="payloadTile primary" href="#" data-name="evox.elf" data-key="evox" data-state="default">
+    <a class="payloadTile primary" href="#" data-name="slopkit_evox.elf" data-key="evox" data-state="default">
       <span>evox</span><span class="meta">auto</span>
     </a>
-    <a class="payloadTile" href="#" data-name="ftpsrv-ps5.elf" data-key="ftp" data-state="default">
+    <a class="payloadTile" href="#" data-name="slopkit_ftpsrv-ps5.elf" data-key="ftp" data-state="default">
       <span>FTP</span><span class="meta">aux</span>
     </a>
-    <a class="payloadTile" href="#" data-name="gdbsrv-ps5.elf" data-key="gdb" data-state="default">
+    <a class="payloadTile" href="#" data-name="slopkit_gdbsrv-ps5.elf" data-key="gdb" data-state="default">
       <span>GDB</span><span class="meta">aux</span>
     </a>
-    <a class="payloadTile" href="#" data-name="klogsrv-ps5.elf" data-key="klog" data-state="default">
+    <a class="payloadTile" href="#" data-name="slopkit_klogsrv-ps5.elf" data-key="klog" data-state="default">
       <span>Klog</span><span class="meta">aux</span>
     </a>
-    <a class="payloadTile" href="#" data-name="shsrv-ps5.elf" data-key="shell" data-state="default">
+    <a class="payloadTile" href="#" data-name="slopkit_shsrv-ps5.elf" data-key="shell" data-state="default">
       <span>Shell</span><span class="meta">aux</span>
     </a>
-    <a class="payloadTile" href="#" data-name="websrv-ps5.elf" data-key="web" data-state="default">
+    <a class="payloadTile" href="#" data-name="slopkit_websrv-ps5.elf" data-key="web" data-state="default">
       <span>Web</span><span class="meta">aux</span>
     </a>
   </div>
@@ -608,9 +605,6 @@
   <!-- ===== التذييل المعدل ===== -->
   <div class="footer">
     <p class="credit">
-      Designed by <a href="#" class="credit-link">Mustafa</a>
-      <span style="color:#445566;font-size:9px;letter-spacing:2px;">&amp;</span>
-      <a href="#" class="credit-link">Ahmed Dragme</a>
     </p>
     <p class="thanks">
       <span class="heart">❤️</span> Special thanks to all
